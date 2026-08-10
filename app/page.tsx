@@ -167,14 +167,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing Section with "Buy Now" */}
+      {/* Pricing Section with "Sign Up & Enter Code" */}
       <section className="py-20 bg-gray-800 border-t border-gray-700">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-4">
             Choose Your <span className="text-blue-400">Plan</span>
           </h2>
           <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-            Pay via M-Pesa (Till 3722030) or Crypto (Binance ID 1067841957)
+            Enter your activation code during sign-up to unlock your plan.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -195,7 +195,7 @@ export default function Home() {
                 "Trading Journal",
                 "24/7 Priority Support",
               ]}
-              planKey="pro"
+              codePrefix="pro-"
               popular={false}
             />
 
@@ -216,7 +216,7 @@ export default function Home() {
                 "Unlimited Custom Setups",
                 "24/7 Priority Support",
               ]}
-              planKey="gold"
+              codePrefix="gold-"
               popular={true}
             />
 
@@ -241,17 +241,16 @@ export default function Home() {
                 "Priority AI processing",
                 "White-glove support",
               ]}
-              planKey="platinum"
+              codePrefix="platinum-"
               popular={false}
             />
           </div>
 
           <div className="text-center mt-12">
             <p className="text-gray-400 text-sm">
-              Pay via M-Pesa Till <span className="text-white font-bold">3722030</span> or 
-              Binance ID <span className="text-white font-bold">1067841957</span>
+              Sign up now and enter your activation code to unlock your plan instantly.
               <br />
-              Contact us at <span className="text-blue-400">support@pipnexai.com</span> for assistance.
+              Don't have a code? Contact us at <span className="text-blue-400">support@pipnexai.com</span>
             </p>
           </div>
         </div>
@@ -284,7 +283,7 @@ function PricingCard({
   price, 
   period, 
   features, 
-  planKey, 
+  codePrefix, 
   popular 
 }: { 
   name: string; 
@@ -292,7 +291,7 @@ function PricingCard({
   price: string; 
   period: string; 
   features: string[]; 
-  planKey: string;
+  codePrefix: string; 
   popular: boolean;
 }) {
   return (
@@ -320,13 +319,13 @@ function PricingCard({
         ))}
       </div>
 
-      <Link href={`/payment?plan=${planKey}`}>
+      <Link href="/sign-up">
         <Button className={`w-full ${popular ? 'bg-blue-500 hover:bg-blue-600' : 'bg-gray-700 hover:bg-gray-600'} text-white`}>
-          Buy Now
+          Sign Up & Enter Code
         </Button>
       </Link>
       <p className="text-xs text-gray-500 text-center mt-3">
-        Pay via M-Pesa (Till 3722030) or Crypto (ID 1067841957)
+        Code format: <span className="font-mono">{codePrefix}yourname</span>
       </p>
     </div>
   );
